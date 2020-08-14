@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import Navbar from './Navbar'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 class Main extends Component {
   render () {
     return (
-      <div className='main-panel'>
+      <div style={{ width: '100%' }}>
+        <Navbar />
         <Switch>
           <Route path='/visualization' component={Visualization} />
           <Route path='/profile' component={UserProfile} />
