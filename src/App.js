@@ -1,10 +1,11 @@
 import React from 'react'
 import './App.scss'
+import Dashboard from './Dashboard/Dashboard'
 
 function App () {
   return (
     <div className='App'>
-      <h1>App component</h1>
+      <Dashboard />
     </div>
   )
 }
