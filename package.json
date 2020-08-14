@@ -16,6 +16,13 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "standard": {
+    "globals": [
+      "test",
+      "fetch",
+      "expect"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -30,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }
