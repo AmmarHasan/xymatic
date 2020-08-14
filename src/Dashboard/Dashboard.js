@@ -5,7 +5,7 @@ import Sidebar from './Sidebar'
 class Dashboard extends Component {
   render () {
     return (
-      <div>
+      <div id='wrapper'>
         <Router>
           <Sidebar />
           <Route path='/' component={Main} />
