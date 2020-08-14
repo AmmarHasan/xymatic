@@ -1,10 +1,10 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
 
 function App () {
   return (
     <div className='App'>
-      App Component
+      <h1>App component</h1>
     </div>
   )
 }
