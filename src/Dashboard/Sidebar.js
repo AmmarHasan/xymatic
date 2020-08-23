@@ -1,40 +1,11 @@
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Sidebar extends Component {
-  constructor () {
-    super()
-    this.state = {
-      isToggled: false
-    }
-    this.updateDimensions = this.updateDimensions.bind(this)
-  }
-
-  updateDimensions () {
-    const windowWidth = window.innerWidth
-    if (windowWidth < 768) {
-      this.setState({ isToggled: false })
-    };
-
-    // Toggle the side navigation when window is resized below 480px
-    if (windowWidth < 480 && !this.state.isToggled) {
-      this.setState({ isToggled: true })
-    };
-  }
-
-  componentDidMount () {
-    this.updateDimensions()
-    window.addEventListener('resize', this.updateDimensions)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('resize', this.updateDimensions)
-  }
-
   render () {
     return (
-      <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${this.state.isToggled ? 'toggled' : ''}`} id='accordionSidebar'>
-
+      <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${this.props.isToggled ? 'toggled' : ''}`} id='accordionSidebar'>
         {/* Sidebar - Brand */}
         <Link to='/' className='sidebar-brand d-flex align-items-center justify-content-center'>
           <div className='sidebar-brand-icon rotate-n-15'>
@@ -67,4 +38,11 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar
+function mapStateToProps (state) {
+  return {
+    isToggled: state.sidebar.isToggled
+  }
+}
+export default connect(
+  mapStateToProps
+)(Sidebar)

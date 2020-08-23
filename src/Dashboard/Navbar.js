@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { toggleSidebarActionCreator } from '../redux/sidebar-slice'
 
 class Navbar extends Component {
   render () {
@@ -7,7 +9,10 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow'>
 
         {/* Sidebar Toggle (Topbar) */}
-        <button id='sidebarToggleTop' className='btn btn-link d-md-none rounded-circle mr-3'>
+        <button
+          id='sidebarToggleTop' className='btn btn-link d-md-none rounded-circle mr-3'
+          onClick={() => this.props.toggleSidebar()}
+        >
           <i className='fa fa-bars' />
         </button>
 
@@ -37,4 +42,13 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar
+function mapDispatchToProps (dispatch) {
+  return {
+    toggleSidebar: () => dispatch(toggleSidebarActionCreator())
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Navbar)
